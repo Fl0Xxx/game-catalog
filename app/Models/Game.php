@@ -19,4 +19,8 @@ class Game extends Model
         'platform',
         'price',
     ];
+
+    protected $casts = [
+        'release_date' => 'datetime',
+    ];
 }
