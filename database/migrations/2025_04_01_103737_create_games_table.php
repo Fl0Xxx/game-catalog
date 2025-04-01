@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->string('platform');
             $table->decimal('price', 8, 2);
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }
