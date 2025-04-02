@@ -71,8 +71,9 @@ class GameController extends Controller
         return view('games.edit', compact('game'));
     }
 
-    public function update(Request $request, Game $game)
+    public function update(Request $request, int $gameId)
     {
+        $game = Game::find($gameId);
         $request->validate([
             'title' => 'required',
             'developer' => 'required',
@@ -96,8 +97,9 @@ class GameController extends Controller
         return redirect()->route('games.index');
     }
 
-    public function destroy(Game $game): RedirectResponse
+    public function destroy(int $gameId): RedirectResponse
     {
+        $game = Game::find($gameId);
         $game->delete();
 
         return redirect()->route('games.index');
