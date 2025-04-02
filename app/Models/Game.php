@@ -18,6 +18,7 @@ class Game extends Model
         'release_date',
         'platform',
         'price',
+        'cover_image',
     ];
 
     protected $casts = [

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
@@ -50,9 +51,17 @@ class GameController extends Controller
             'release_date' => 'required|date',
             'platform' => 'required',
             'price' => 'required|numeric',
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        Game::create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('games', 'public');
+            $data['cover_image'] = $path;
+        }
+
+        Game::create($data);
 
         return redirect()->route('games.index');
     }
@@ -62,7 +71,7 @@ class GameController extends Controller
         return view('games.edit', compact('game'));
     }
 
-    public function update(Request $request, Game $game): RedirectResponse
+    public function update(Request $request, Game $game)
     {
         $request->validate([
             'title' => 'required',
@@ -71,10 +80,19 @@ class GameController extends Controller
             'release_date' => 'required|date',
             'platform' => 'required',
             'price' => 'required|numeric',
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        $game->update($request->all());
+        $data = $request->all();
 
+        if ($request->hasFile('cover_image')) {
+            if ($game->getAttribute('cover_image')) {
+                Storage::disk('public')->delete($game->getAttribute('cover_image'));
+            }
+            $path = $request->file('cover_image')->store('games', 'public');
+            $data['cover_image'] = $path;
+        }
+        $game->update($data);
         return redirect()->route('games.index');
     }
 

@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
+
+        @if ($game->cover_image)
+            <div class="mt-4">
+                <img src="{{ asset('storage/' . $game->cover_image) }}" alt="Cover Image" class="w-120 h-72 object-cover mt-2 rounded-md">
+            </div>
+        @endif
+
         <h1 class="text-2xl font-bold mb-4">{{ $game->title }}</h1>
 
         <p><strong>Developer:</strong> {{ $game->developer }}</p>

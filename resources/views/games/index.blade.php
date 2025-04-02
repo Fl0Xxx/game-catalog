@@ -37,6 +37,7 @@
         <table class="w-full border-collapse border border-gray-300 text-left">
             <thead>
             <tr class="bg-gray-100">
+                <th class="border border-gray-300 p-2">Cover</th>
                 <th class="border border-gray-300 p-2">Title</th>
                 <th class="border border-gray-300 p-2">Developer</th>
                 <th class="border border-gray-300 p-2">Genre</th>
@@ -49,6 +50,13 @@
             <tbody>
             @foreach ($games as $game)
                 <tr class="border border-gray-300">
+                    <td class="p-2">
+                        @if ($game->cover_image)
+                            <img src="{{ asset('storage/' . $game->cover_image) }}" alt="Cover Image" class="w-16 h-16 object-cover rounded">
+                        @else
+                            <span>No Image</span>
+                        @endif
+                    </td>
                     <td class="p-2">{{ $game->title }}</td>
                     <td class="p-2">{{ $game->developer }}</td>
                     <td class="p-2">{{ $game->genre }}</td>
