@@ -1,9 +1,21 @@
 FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
-    zip unzip curl git libpng-dev libonig-dev libxml2-dev libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    iputils-ping \
+    net-tools \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql zip gd
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 WORKDIR /var/www
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
