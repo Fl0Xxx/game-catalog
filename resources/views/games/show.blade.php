@@ -1,3 +1,5 @@
+<!-- resources/views/games/show.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
@@ -8,7 +10,13 @@
         <p><strong>Genre:</strong> {{ $game->genre }}</p>
         <p><strong>Release Date:</strong> {{ $game->release_date->format('d.m.Y') }}</p>
         <p><strong>Platform:</strong> {{ $game->platform }}</p>
-        <p><strong>Price:</strong> ${{ number_format($game->price, 2) }}</p>
+        <p><strong>Price:</strong>
+            @if ($game->price != 0)
+                ${{ number_format($game->price, 2) }}
+            @else
+                Free
+            @endif
+        </p>
 
         <a href="{{ route('games.index') }}" class="inline-block mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Back</a>
     </div>

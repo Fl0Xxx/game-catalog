@@ -10,9 +10,24 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $games = Game::all();
+        $query = Game::query();
+
+        if ($request->get('genre')) {
+            $query->where('genre', $request->get('genre'));
+        }
+
+        if ($request->get('platform')) {
+            $query->where('platform', $request->get('platform'));
+        }
+
+        if ($request->get('search')) {
+            $query->where('title', 'like', '%' . $request->get('search') . '%');
+        }
+
+        $games = $query->paginate(2);
+
         return view('games.index', compact('games'));
     }
 
