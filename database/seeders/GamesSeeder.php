@@ -19,7 +19,7 @@ class GamesSeeder extends Seeder
             'developer' => 'CD Projekt Red',
             'genre' => 'RPG',
             'release_date' => '2015-05-19',
-            'platform' => 'PC, PlayStation, Xbox',
+            'platform' => 'PC',
             'price' => 39.99,
         ]);
 
@@ -37,7 +37,7 @@ class GamesSeeder extends Seeder
             'developer' => 'Blizzard',
             'genre' => 'DCCG',
             'release_date' => '2014-03-11',
-            'platform' => 'PC,Android,iOS,macOS',
+            'platform' => 'Android',
             'price' => 0,
         ]);
     }
