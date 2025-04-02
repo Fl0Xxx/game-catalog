@@ -67,7 +67,7 @@ chown -R www-data:www-data /var/www/storage
 Once the containers are running, open the application in your browser:
 
 ```
-http://localhost:8000
+http://localhost:8000/games
 ```
 
 ## License
