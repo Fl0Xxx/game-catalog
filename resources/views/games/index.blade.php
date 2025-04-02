@@ -16,10 +16,9 @@
 
             <select name="genre" class="p-2 border rounded w-1/4">
                 <option value="">All Genres</option>
-                <option value="Action" {{ request('genre') == 'Action' ? 'selected' : '' }}>Action</option>
+                <option value="Action-Adventure" {{ request('genre') == 'Action-Adventure' ? 'selected' : '' }}>Action-Adventure</option>
                 <option value="RPG" {{ request('genre') == 'RPG' ? 'selected' : '' }}>RPG</option>
-                <option value="Shooter" {{ request('genre') == 'Shooter' ? 'selected' : '' }}>Shooter</option>
-                <option value="Adventure" {{ request('genre') == 'Adventure' ? 'selected' : '' }}>Adventure</option>
+                <option value="DCCG" {{ request('genre') == 'DCCG' ? 'selected' : '' }}>DCCG</option>
             </select>
 
             <select name="platform" class="p-2 border rounded w-1/4">
@@ -28,6 +27,7 @@
                 <option value="PlayStation" {{ request('platform') == 'PlayStation' ? 'selected' : '' }}>PlayStation</option>
                 <option value="Xbox" {{ request('platform') == 'Xbox' ? 'selected' : '' }}>Xbox</option>
                 <option value="Nintendo" {{ request('platform') == 'Nintendo' ? 'selected' : '' }}>Nintendo</option>
+                <option value="Android" {{ request('platform') == 'Android' ? 'selected' : '' }}>Android</option>
             </select>
 
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Filter</button>
