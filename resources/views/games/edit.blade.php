@@ -42,7 +42,7 @@
 
             <div>
                 <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-                <input type="text" name="price" id="price" value="{{ $game->price }}" required
+                <input type="text" name="price" id="price" value="{{ $game->price }}" required oninput="this.value = this.value.replace(/,/g, '.');"
                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
 

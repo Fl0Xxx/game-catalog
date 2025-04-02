@@ -3,8 +3,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-6xl mx-auto p-6 bg-white shadow-md rounded-lg">
-        <h1 class="text-3xl font-bold mb-6 text-center">Game Catalog</h1>
+    <div class="max-w-6xl mx-auto p-6 bg-white justify-center shadow-md rounded-lg">
+        <div class="flex items-center mb-6">
+            <h1 class="text-3xl flex-1 font-bold text-center">Game Catalog</h1>
+            <a href="{{ route('games.create') }}" class="ml-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add New Game</a>
+        </div>
 
         <form method="GET" action="{{ route('games.index') }}" class="mb-6 flex flex-wrap gap-4 items-center">
             <input type="text" name="search" placeholder="Search by title"
